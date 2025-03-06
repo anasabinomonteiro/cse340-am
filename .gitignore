@@ -3,8 +3,8 @@
 # and comments are unnecessary, but included for 
 # clarification.
 
-# node_modules is a storage folder for Node and
-# can get very large.
+# node_modules is a storage folder for Node 
+# and it is very large and not needed for github to run the project
 node_modules
 
 # .env file is for local use only. It contains
@@ -14,3 +14,7 @@ node_modules
 
 # .DS_Store is only for Mac users
 **/.DS_Store
+
+# Readme.md is a markdown file that is not needed
+# for the project to run
+README.md

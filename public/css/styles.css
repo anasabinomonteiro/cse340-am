@@ -4,3 +4,261 @@
 *:after {
   box-sizing: border-box;
 }
+
+body {
+  background-image: url('/images/site/small_check.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.siteName {
+  font-size: 40px;
+  color: black;
+}
+
+#tools a{
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.welcome h1 {
+  margin-bottom: 40px;
+}
+
+#wrapper {
+  background-color: white;
+  max-width: 1200px;
+  margin: 20px auto; /* center the content */
+  padding: 20px;
+  border-radius: 20px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgb(222, 222, 48);  
+}
+
+/* Remove margin and extra spaces */
+#wrapper > * {
+  margin: 0;
+  padding: 0;
+}
+
+ #main-nav {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;  
+  background-color: black;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  clear: both; /* clear any float before */
+ }
+
+ #main-nav ul {
+  display: flex;
+  list-style-type: none;
+ }
+
+ #main-nav ul li {
+  margin-right: 100px;
+}
+
+figure {
+  display: inline-block;
+  text-align: center;
+  margin: 10px;
+}
+
+figcaption {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+#ul_review {
+  list-style-type: disc;
+  padding-left: 0;
+  margin: 0;
+  margin-top: 20px;}
+
+#ul_review li {
+  font-style: italic;
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+#own_today {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  font-size: 20px;
+  color: rgb(17, 153, 238);
+  position: relative;
+  border-radius: 10px;
+}
+
+.own-today-text, .own-today-img {
+  background-color: rgba(0, 0, 0, 0.1); 
+}
+
+#own_today h2, #own_today h3 {
+  margin: 0 0 10px;
+  }
+
+#own_today .own-today-text {
+  max-width: 50%;
+  z-index: 1;  
+}
+
+#own_today img.own-today-img {
+  max-width: 50%;
+  z-index: 2;
+  position: relative;
+}
+
+#delorean{
+  position: absolute;
+  bottom: -30px; /*for sobreposition*/
+  left: 150px; /*for sobreposition*/
+  width: 50%;
+  opacity: 0.6; /*transparency*/
+  z-index: 0; /*for sobreposition*/
+}
+
+#delorean img {
+  width: 100%;
+  height: auto;
+}
+
+.upg-rev-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+#delorean_upgrades {
+  width: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 20px;
+  text-align: center;
+}
+
+#delorean_up {
+  grid-column: 1/ -1;   /* h2 in the width from grid*/
+  margin-bottom: 20px;
+}
+
+#delorean_upgrades figure {
+  background-color: rgb(0, 204, 255);
+  padding: 10px;
+  position: relative;
+}
+
+#delorean_upgrades img {
+  max-width: 100%;
+  height: auto;  
+  display: block;
+}
+
+#delorean_upgrades figcaption {
+  background: none;
+  font-size: 14px;
+  color: #555;
+  font-weight: bold;
+  bottom: -35px; /* move the text outside background-color*/
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+}
+
+#delorean_reviews {
+  padding: 20px;
+}
+
+#delorean_reviews #ul_review {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+#main-footer {
+  padding: 20px;
+  margin-top: 40px;
+}   
+
+/***********************small screen 540px**************************************/
+@media (max-width: 540px) {
+  #top-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .siteName {
+    font-size: 24px;
+  }
+
+  #tools a {
+    font-size: 16px;
+  } 
+
+  #main-nav {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  #main-nav ul {
+    flex-direction: column;
+    padding: 0;
+  }
+
+  #main-nav ul li {
+    margin: 10px 0;
+    margin-right: 0;    
+  }
+
+  #own_today {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #own_today .own-today-text,
+  #own_today .own-today-img {
+    max-width: 100%;
+  }
+
+  #delorean {
+    position: static;
+    width: 100%;
+    left: 25%;
+    width: 50%;
+  }
+
+  .upg-rev-container {
+    grid-template-columns: 1fr;
+  }
+
+  #delorean_upgrades {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }    
+}

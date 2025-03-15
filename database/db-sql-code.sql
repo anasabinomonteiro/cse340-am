@@ -232,5 +232,15 @@ VALUES (
         10000,
         108247,
         'White',
-        5
+        5    
     );
+
+-- Update inventory description from the GM Hummer
+UPDATE public.inventory
+SET inv_description = REPLACE (inv_description, 'the small interiors', 'a huge interior ')
+WHERE inv_id = 10
+
+-- Update inventory table inv_image and inv_thumbnail columns from: '/images' to: ''/images/vehicles'
+UPDATE public.inventory
+SET inv_image = REPLACE (inv_image, '/images/', '/images/vehicles/'),
+	inv_thumbnail = REPLACE (inv_thumbnail, '/images/', '/images/vehicles/');

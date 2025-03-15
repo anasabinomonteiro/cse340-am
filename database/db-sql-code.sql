@@ -1,5 +1,5 @@
 CREATE TYPE public.account_type AS ENUM ('Client', 'Employee', 'Admin');
-ALTER TYPE public.account_type OWNER TO cse340am;
+ALTER TYPE public.account_type OWNER TO cse340am6;
 
 -- Table structure for table 'classification'
 CREATE TABLE public.classification (
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS public.inventory (
     inv_miles integer NOT NULL,
     inv_color character varying NOT NULL,
     classification_id integer NOT NULL,
-    CONSTRAINT inventory_pkey PRIMAY KEY (inv_id)
+    CONSTRAINT inventory_pkey PRIMARY KEY (inv_id)
 );
 
 -- Create relationship between 'classification' and 'inventory' tables
@@ -244,10 +244,10 @@ VALUES (
 
 -- Update inventory description from the GM Hummer
 UPDATE public.inventory
-SET inv_description = REPLACE (inv_description, 'the small interiors', 'a huge interior ')
-WHERE inv_id = 10
+SET inv_description = REPLACE (inv_description, 'the small interiors', 'a huge interior')
+WHERE inv_id = 10;
 
--- Update inventory table inv_image and inv_thumbnail columns from: '/images' to: ''/images/vehicles'
+-- Update inventory table inv_image and inv_thumbnail columns from: /images to: /images/vehicles
 UPDATE public.inventory
 SET inv_image = REPLACE (inv_image, '/images/', '/images/vehicles/'),
 	inv_thumbnail = REPLACE (inv_thumbnail, '/images/', '/images/vehicles/');

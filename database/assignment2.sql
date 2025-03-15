@@ -40,7 +40,7 @@ FROM public.inventory
 WHERE classification.classification_name = 'Sport';
 
 
--- 6.Update inventory table inv_image and inv_thumbnail columns from: '/images' to: ''/images/vehicles'
+--6. Update inventory table inv_image and inv_thumbnail columns from: /images to: /images/vehicles
 UPDATE public.inventory
 SET inv_image = REPLACE (inv_image, '/images/', '/images/vehicles/'),
 	inv_thumbnail = REPLACE (inv_thumbnail, '/images/', '/images/vehicles/');

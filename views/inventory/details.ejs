@@ -1,0 +1,22 @@
+<% - include('../partials/head') %>
+<h1><%= vehicle.inv_year %> <%= vehicle.inv_make %> <%=vehicle.inv_model %></h1>
+
+<div class="vehicle-detail-container">
+  <div class="vehicle-image">
+    <img
+      src="<%= vehicle.inv_image %>"
+      alt="Image of <%= vehicle.inv_make %> <%= vehicle.inv_model %>"
+    />
+  </div>
+  <div class="vehicle-info">
+    <h2><%= vehicle.inv_make %> <%= vehicle.inv_model %> Details</h2>
+    <p class="highlight-price">
+      <strong>Price: </strong> <%= formatCurrency(vehicle.inv_price) %>
+    </p>
+    <p><strong>Description: </strong> <%= vehicle.inv_description %></p>
+    <p class="highlight-color">
+      <strong>Color: </strong> <%= vehicle.inv_color %>
+    </p>
+    <p><strong>Mileage: </strong> <%= formatNumber(vehicle.inv_miles) %></p>
+  </div>
+</div>

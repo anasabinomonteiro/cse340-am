@@ -221,6 +221,12 @@ figcaption {
   margin-top: 40px;
 }   
 
+.handle_message {
+  font-size: 20px;
+  margin: 10px 0;
+  color: rgb(48, 47, 47);  
+}
+
 /**********Inventory Section*******************/
 #inv-display {
   display: grid;
@@ -270,6 +276,47 @@ figcaption {
 
 .namePrice span:hover {
   color: #c9302c;
+}
+
+/**********Vehicle Inventory Section*******************/
+.vehicle-detail-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.vehicle-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.vehicle-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.vehicle-info h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.vehicle-info p {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.highlight-price,
+.highlight-color {
+  background-color: rgb(240, 236, 236);
+}
+
+.highlight-price {
+  font-weight: bold;  
 }
 
 /*##############################################################################*/
@@ -356,5 +403,10 @@ figcaption {
 
   .namePrice span {
     font-size: 14px;
+  }
+
+  .vehicle-detail-container {
+    flex-direction: column;
+    align-items: center;
   }
 }

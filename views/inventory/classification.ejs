@@ -1,14 +1,12 @@
 <!--   Content Heading - describe the content of the view implementing a value for <title>  
        Uses a EJS code block to contain a JavaScript if structure to determine if a "title" variable exists. 
        If the variable exists, it is displayed within an <h1> element.  -->
-<%  if (title) { %>        
-<h1><%= title  %></h1>     
-<% } else {
-    res.redirect('/')      
-    } %>  
+<% if (title) { %>
+<h1><%= title %></h1>
+<% } else { res.redirect('/') } %>
 
 <!--   Message Block - describe a message about what are happening.  -->
 <%# messages() %>
 
 <!--   Inventory Items Display - the main content delivery mechanism for the view. Only displays the result, the logic was done in others files. -->
-<%- grid  %>
+<%- grid %>

@@ -58,6 +58,46 @@ Util.buildClassificationgrid = async function (data) {
     return grid
 }
 
+/* **********************************
+ * Build the HTML structure for details views (specific vehicle)
+******************************************* */
+Util.buildVehicleDetailHTML = function (vehicle) {
+    if (!vehicle) {
+        return '<p>Sorry, no matching vehicles could be found.</p>';
+    }
+    return `
+        <div class="vehicle-detail-container">
+            <div class="vehicle-image">
+                <img src="${vehicle.inv_image}" alt="${vehicle.inv_make} ${vehicle.inv_model}" />        
+        </div>
+        <div class="vehicle-info">
+            <h2>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model} </h2>
+            <p><strong>Price:</strong> ${formatCurrency(vehicle.inv_price)}</p>   
+            <p><strong>Mileage:</strong> ${formatNumber(vehicle.inv_miles)}</p>   
+            <p><strong>Description:</strong> ${vehicle.inv_description}</p>  
+            <p><strong>Color:</strong> ${vehicle.inv_color}</p>
+        </div>
+        </div>
+        `;
+}
+
+/*
+*Format price U.S dollars
+*/
+Util.formatCurrency = function (amount) {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    }).format(amount);
+}
+
+/*
+*Format numbers with commas
+*/
+Util.formatNumber = function (number) {
+    return new Intl.NumberFormat('en-US').format(number);
+}
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for 

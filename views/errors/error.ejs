@@ -1,14 +1,5 @@
-<%#Basic Error Page%> 
-<%- include('../partials/head.ejs') %> 
-
-<% if (title) { %>
+<%#Basic Error Page%> %> <% if (title) { %>
 <h1><%= title %></h1>
-<% } else {
-    res.redirect('/')
-    } %>
-    
-<%- message %>
- 
- 
- 
- 
+<% } %>
+
+<p class="handle_message"><%- message %></p>

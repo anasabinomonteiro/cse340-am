@@ -4,10 +4,14 @@
 
   <body>
     <div id="wrapper">
-      <%- include('../partials/header') %> 
-      <%- include('../partials/navigation') %>
+      <%- include('../partials/header') %> <%- include('../partials/navigation')
+      %>
 
-      <main><%- body %></main>
+      <main
+        class="<%= title === 'Login' || title === 'Register' ? 'login-container register-container main-content' : '' %>"
+      >
+        <%- body %>
+      </main>
 
       <%- include('../partials/footer') %>
     </div>

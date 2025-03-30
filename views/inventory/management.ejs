@@ -1,0 +1,15 @@
+<h1>Inventory Management</h1>
+
+<% if (messages && messages.success) { %>
+<p style="color: green"><%= messages.success %></p>
+<% } %> <% if (messages && messages.error) { %>
+<p style="color: red"><%= messages.error %></p>
+<% } %>
+
+<p>
+  <a href="/inv/add-classification">Add new classification</a>
+</p>
+
+<p>
+  <a href="/inv/add-inventory">Add new inventory</a>
+</p>

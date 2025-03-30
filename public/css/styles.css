@@ -28,11 +28,11 @@ body {
   color: black;
 }
 
-#tools a{
+#tools a {
   font-size: 20px;
   text-decoration: none;
   color: black;
-  padding: 10px 20px; 
+  padding: 10px 20px;
   background-color: rgb(222, 222, 48, 0.5);
   border-radius: 5px;
 }
@@ -44,52 +44,55 @@ body {
 #wrapper {
   background-color: white;
   max-width: 100vw;
-  margin: 20px auto; /* center the content */
+  margin: 20px auto;
+  /* center the content */
   padding: 20px;
   border-radius: 20px;
   border-width: 5px;
   border-style: solid;
   border-color: rgb(222, 222, 48);
-  overflow: hidden; /* prevent overflow of content */
+  overflow: hidden;
+  /* prevent overflow of content */
 }
 
 /* Remove margin and extra spaces */
-#wrapper > * {
+#wrapper>* {
   margin: 0;
   padding: 0;
 }
 
- #main-nav {
+#main-nav {
   display: flex;
   justify-content: space-around;
   padding-top: 10px;
   margin-top: 20px;
-  margin-bottom: 20px;  
+  margin-bottom: 20px;
   background-color: rgb(117, 114, 114);
   color: white;
   font-weight: bold;
   font-size: 20px;
-  clear: both; /* clear any float before */
- }
+  clear: both;
+  /* clear any float before */
+}
 
- #main-nav ul {
+#main-nav ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 25px;
   padding: 0;
   list-style: none;
- }
-
- #main-nav ul li {
-  margin-right: 0;
- }
-
- #main-nav ul li a {
-  color: white;        
 }
 
- #main-nav ul li a:hover {
+#main-nav ul li {
+  margin-right: 0;
+}
+
+#main-nav ul li a {
+  color: white;
+}
+
+#main-nav ul li a:hover {
   text-decoration: underline;
   color: rgb(222, 222, 48);
 }
@@ -110,7 +113,8 @@ figcaption {
   list-style-type: disc;
   padding-left: 0;
   margin: 0;
-  margin-top: 20px;}
+  margin-top: 20px;
+}
 
 #ul_review li {
   font-style: italic;
@@ -130,17 +134,19 @@ figcaption {
   border-radius: 10px;
 }
 
-.own-today-text, .own-today-img {
-  background-color: rgba(0, 0, 0, 0.1); 
+.own-today-text,
+.own-today-img {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-#own_today h2, #own_today h3 {
+#own_today h2,
+#own_today h3 {
   margin: 0 0 10px;
-  }
+}
 
 #own_today .own-today-text {
   max-width: 50%;
-  z-index: 1;  
+  z-index: 1;
 }
 
 #own_today img.own-today-img {
@@ -149,13 +155,13 @@ figcaption {
   position: relative;
 }
 
-#delorean{
+#delorean {
   position: absolute;
-  bottom: -50px; /*for sobreposition*/
-  left: 170px; /*for sobreposition*/
+  bottom: -50px;
+  left: 200px;
   width: 40%;
-  opacity: 0.6; /*transparency*/
-  z-index: 0; /*for sobreposition*/
+  opacity: 0.6;
+  z-index: 0;
 }
 
 #delorean img {
@@ -163,7 +169,7 @@ figcaption {
   height: auto;
 }
 
-.upg-rev-container{
+.upg-rev-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
@@ -180,7 +186,8 @@ figcaption {
 }
 
 #delorean_up {
-  grid-column: 1/ -1;   /* h2 in the width from grid*/
+  grid-column: 1/ -1;
+  /* h2 in the width from grid*/
   margin-bottom: 20px;
 }
 
@@ -192,7 +199,7 @@ figcaption {
 
 #delorean_upgrades img {
   max-width: 100%;
-  height: auto;  
+  height: auto;
   display: block;
 }
 
@@ -201,7 +208,8 @@ figcaption {
   font-size: 14px;
   color: #555;
   font-weight: bold;
-  bottom: -35px; /* move the text outside background-color*/
+  bottom: -35px;
+  /* move the text outside background-color*/
   left: 50%;
   transform: translateX(-50%);
   position: absolute;
@@ -219,12 +227,12 @@ figcaption {
 #main-footer {
   padding: 20px;
   margin-top: 40px;
-}   
+}
 
 .handle_message {
   font-size: 20px;
   margin: 10px 0;
-  color: rgb(48, 47, 47);  
+  color: rgb(48, 47, 47);
 }
 
 /* .notice {
@@ -323,7 +331,7 @@ figcaption {
 }
 
 .highlight-price {
-  font-weight: bold;  
+  font-weight: bold;
 }
 
 
@@ -338,7 +346,7 @@ figcaption {
   padding: 20px;
   background: rgb(217, 217, 240);
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);  
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .login-form {
@@ -420,6 +428,96 @@ figcaption {
   background-color: #0056b3;
 }
 
+#addInventoryForm {
+  max-width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background: rgb(217, 217, 240);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#addInventoryForm label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#addInventoryForm input,
+#addInventoryForm textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#addInventoryForm textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+#addInventoryForm button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#addInventoryForm button:hover {
+  background-color: #0056b3;
+}
+
+#addClassificationForm {
+  max-width: 400px;
+  margin: 30px auto;
+  padding: 20px;
+  background: rgb(217, 217, 240);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#addClassificationForm label {
+  font-weight: bold;
+}
+
+#addClassificationForm input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #856404;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#addClassificationForm p {
+  font-size: 14px;
+  color: #856404;
+  margin-top: 5px;
+}
+
+#addClassificationForm button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #af8507;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#addClassificationForm button:hover {
+  background-color: #e0a800;
+}
+
 
 /*##############################################################################*/
 /***********************Small screens 540px**************************************/
@@ -429,7 +527,7 @@ figcaption {
     text-align: center;
     padding: 10px;
   }
-    
+
   .siteName {
     font-size: 24px;
   }
@@ -438,7 +536,7 @@ figcaption {
     font-size: 16px;
     padding: 5px 10px;
     margin: auto;
-   } 
+  }
 
   #main-nav {
     flex-direction: column;
@@ -453,11 +551,11 @@ figcaption {
 
   #main-nav ul li {
     margin: 10px 0;
-    margin-right: 0;        
+    margin-right: 0;
   }
 
   #main-nav ul li a {
-    color: white;        
+    color: white;
   }
 
   #own_today {
@@ -468,7 +566,7 @@ figcaption {
   #own_today .own-today-text,
   #own_today .own-today-img {
     max-width: 100%;
-   }
+  }
 
   #delorean {
     position: static;
@@ -484,7 +582,7 @@ figcaption {
   #delorean_upgrades {
     width: 100%;
     grid-template-columns: 1fr;
-  }    
+  }
 
   #inv-display {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -510,5 +608,32 @@ figcaption {
   .vehicle-detail-container {
     flex-direction: column;
     align-items: center;
+  }
+
+  /********** Form Section *******************/
+  .login-form,
+  .register-form,
+  #addInventoryForm,
+  #addClassificationForm {
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .login-form input,
+  .register-form input,
+  #addInventoryForm input,
+  #addInventoryForm textarea,
+  #addClassificationForm input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .login-form button,
+  .register-form button,
+  #addInventoryForm button,
+  #addClassificationForm button {
+    font-size: 16px;
+    padding: 10px;
   }
 }

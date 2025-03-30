@@ -46,4 +46,48 @@ async function getVehicleById(inv_id) {
     }
 }
 
-module.exports = { getClassifications, getInventoryByClassificationId, getVehicleById };
+/* ********************************************************************
+ *  Register a new classification
+*  *******************************************************************/
+async function addClassification(classification_name) {
+    try {
+        const sql = `INSERT INTO public.classification (classification_name) VALUES ($1) RETURNING classification_id`;
+        const data = await pool.query(sql, [classification_name]);
+        return data.rows[0].classification_id; // Return the new classification ID
+    } catch (error) {
+        console.error('Add classification error ' + error);
+        return null;
+    }
+}
+
+/* ********************************************************************
+ *  Add a new inventory item
+*  *******************************************************************/
+async function addInventory(inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id) {
+    try {
+        inv_year = inv_year.toString().padStart(4, '0');
+
+        const sql = `INSERT INTO public.inventory 
+        (inv_make, inv_model, inv_year, inv_description, inv_image, inv_thumbnail, inv_price, inv_miles, inv_color, classification_id)
+        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) 
+        RETURNING inv_id`;
+
+        const data = await pool.query(sql, [
+            inv_make,
+            inv_model,
+            inv_year,
+            inv_description,
+            inv_image,
+            inv_thumbnail,
+            inv_price,
+            inv_miles,
+            inv_color,
+            classification_id
+        ]);
+        return data.rows[0].inv_id;
+    } catch (error) {
+        console.error('Add inventory error ', error);
+        return null;
+    }
+}
+module.exports = { getClassifications, getInventoryByClassificationId, getVehicleById, addClassification, addInventory };

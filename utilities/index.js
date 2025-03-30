@@ -99,10 +99,26 @@ Util.formatNumber = function (number) {
 }
 
 /* ****************************************
- * Middleware For Handling Errors
- * Wrap other function in this for 
- * General Error Handling
- **************************************** */
+ * Build the <select> classification list in add new inventory item
+/* **************************************** */
+Util.buildClassificationList = async function (selectId = "") {
+    let data = await invModel.getClassifications();
+    let classificationList = "<select id='classification_id' name='classification_id' required>";
+    classificationList += "<option value=''>Choose a Classification</option>";
+
+    data.rows.forEach((classification) => {
+        let selected = classification.classification_id == selectId ? " selected" : "";
+        classificationList += `<option value="${classification.classification_id}"${selected}>${classification.classification_name}</option>`;
+    });
+
+    classificationList += "</select>";
+    return classificationList;
+};
+
+/* Middleware For Handling Errors
+* Wrap other function in this for 
+* General Error Handling
+**************************************** */
 Util.handleErrors = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next)
 
 module.exports = Util;

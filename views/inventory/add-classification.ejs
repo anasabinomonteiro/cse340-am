@@ -1,0 +1,38 @@
+<h1>Add new Classification</h1>
+
+<% if (messages && messages.success) { %>
+<p style="color: green"><%= messages.success %></p>
+<% } %> <% if (messages && messages.error) { %>
+<p style="color: red"><%= messages.error %></p>
+<% } %>
+
+<form action="/inv/add-classification" method="POST" id="addClassificationForm">
+  <label for="classification_name">Classification:</label><br />
+  <input
+    type="text"
+    id="classification_name"
+    name="classification_name"
+    required
+    pattern="^[a-zA-Z0-9]+$"
+    title="The classification name cannot contain spaces or special characters."
+  />
+  <p>The classification name cannot contain spaces or special characters.</p>
+  <button type="submit">Add Classification</button>
+</form>
+
+<!-- Added by Ana Monteiro for testing and challenge- js validation - for client side and alert display -->
+<script>
+  document
+    .getElementById("addClassificationForm")
+    .addEventListener("submit", function (event) {
+      const classificationName = document.getElementById(
+        "classification_name"
+      ).value;
+      if (!/^[a-zA-Z0-9]+$/.test(classificationName)) {
+        alert(
+          "The classification name cannot contain spaces or special characters."
+        );
+        event.preventDefault(); // Prevent form submission
+      }
+    });
+</script>

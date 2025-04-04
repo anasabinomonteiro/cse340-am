@@ -165,7 +165,7 @@ figcaption {
 }
 
 #delorean img {
-  width: 100%;
+  width: 80%;
   height: auto;
 }
 
@@ -518,9 +518,156 @@ figcaption {
   background-color: #e0a800;
 }
 
+/********* Management Inventory Section *******************/
+.inv-management {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inv-management a {
+  display: block;
+  width: 90%;
+  text-align: center;
+  padding: 12px;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 5px 0;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.inv-management a:hover {
+  background-color: #007bff;
+  color: white;
+}
+
+#man-inv {
+  font-size: 24px;
+  padding: 0 10px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#pman-inv {
+  text-align: center;
+  color: #555;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+#classification_id {
+  width: 70%;
+  max-width: 500px;
+  display: block;
+  margin: 10px auto;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+#classification_id option {
+  padding: 10px;
+  font-size: 16px;
+}
+
+#inventoryDisplay {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#inventoryDisplay thead {
+  background-color: #007bff;
+  color: white;
+}
+
+#inventoryDisplay th,
+#inventoryDisplay td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+#inventoryDisplay th {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+#inventoryDisplay tr:hover {
+  background: #e0a800;
+}
+
+.edit-inventory-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #bacce0;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.edit-inventory-container h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.edit-inventory-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.edit-inventory-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.edit-inventory-form input,
+.edit-inventory-form select,
+.edit-inventory-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.edit-inventory-form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.edit-inventory-form button {
+  background-color: #058147;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.edit-inventory-form button:disabled {
+  background-color: #ccc;
+  color: #2c2c2c;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
 
 /*##############################################################################*/
-/***********************Small screens 540px**************************************/
+/***********************Small screens 768px**************************************/
 @media (max-width: 768px) {
   #top-header {
     flex-direction: column;
@@ -633,6 +780,101 @@ figcaption {
   .register-form button,
   #addInventoryForm button,
   #addClassificationForm button {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  /********* Management Inventory Section *******************/
+  #classification_id {
+    width: 90%;
+  }
+
+  .inv-management {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .inv-management a {
+    width: 90%;
+    padding: 12px;
+    font-size: 1rem;
+  }
+
+  #man-inv {
+    font-size: 20px;
+  }
+
+  #pman-inv {
+    font-size: 14px;
+    padding: 0 10px;
+  }
+
+  #inventoryDisplay {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  #classification_id {
+    width: 80%;
+  }
+
+  #classification_id option {
+    font-size: 16px;
+  }
+
+  #inventoryDisplay thead {
+    display: none;
+  }
+
+  #inventoryDisplay tbody,
+  #inventoryDisplay tr,
+  #inventoryDisplay td {
+    display: block;
+    width: 100%;
+  }
+
+  #inventoryDisplay tr {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  #inventoryDisplay td {
+    position: relative;
+    text-align: center;
+    padding-left: 0;
+  }
+
+  #inventoryDisplay td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .edit-inventory-container {
+    max-width: 90%;
+    padding: 15px;
+  }
+
+  .edit-inventory-container h1 {
+    font-size: 20px;
+  }
+
+  .edit-inventory-form {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .edit-inventory-form input,
+  .edit-inventory-form select,
+  .edit-inventory-form textarea {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .edit-inventory-form button {
     font-size: 16px;
     padding: 10px;
   }

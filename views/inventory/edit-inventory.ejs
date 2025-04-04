@@ -1,0 +1,107 @@
+<div class="edit-inventory-container">
+<h1>Edit an item from inventory</h1>
+
+<% if (messages && messages.success) { %>
+<p style="color: green; font-size: 2.2em; font-weight:bold;"><%= messages.success %></p>
+<% } %> <% if (messages && messages.error) { %>
+<p style="color: red; font-size: 2.2em; font-weight:bold;"><%= messages.error %></p>
+<% } %>
+
+<form action="/inv/edit-inventory" method="POST" id="updateForm" class="edit-inventory-form">
+  <label for="classification_id">Classification</label>
+     <%- classificationList %>
+  
+  <label for="inv_make">Make</label>
+  <input
+    type="text"
+    id="inv_make"
+    name="inv_make"
+    value="<%= locals.inv_make || '' %>"
+    required
+  />
+
+  <label for="inv_model">Model</label>
+  <input
+    type="text"
+    id="inv_model"
+    name="inv_model"
+    value="<%= locals.inv_model || '' %>"
+    required
+  />
+
+  <label for="inv_year">Year</label>
+  <input
+    type="text"
+    id="inv_year"
+    name="inv_year"
+    maxlength="4"
+    value="<%= locals.inv_year || '' %>"
+    required
+  />
+
+  <label for="inv_description"></label>
+  <textarea
+    id="inv_description"
+    name="inv_description"
+    placeholder="Enter a description of the item here..."
+    required
+  >
+    <%= locals.inv_description || '' %></textarea
+  >
+
+  <label for="inv_image">Image</label>
+  <input
+    type="text"
+    id="inv_image"
+    name="inv_image"
+    value="<%= locals.inv_image || '/images/vehicles/no-image.png' %>"
+    required
+  />
+
+  <label for="inv_thumbnail">Thumbnail</label>
+  <input
+    type="text"
+    id="inv_thumbnail"
+    name="inv_thumbnail"
+    value="<%= locals.inv_thumbnail || '/images/vehicles/no-image-tn.png' %>"
+    required
+  />
+
+  <label for="inv_price">Price</label>
+  <input
+    type="number"
+    id="inv_price"
+    name="inv_price"
+    value="<%= locals.inv_price || '' %>"
+    required
+    step="0.01"
+    min="0"
+  />
+
+  <label for="inv_miles">Miles</label>
+  <input
+    type="number"
+    id="inv_miles"
+    name="inv_miles"
+    value="<%= locals.inv_miles || '' %>"
+    required
+  />
+
+  <label for="inv_color">Color</label>
+  <input
+    type="text"
+    id="inv_color"
+    name="inv_color"
+    value="<%= locals.inv_color || '' %>"
+    required
+  />
+
+  <button type="submit" disabled>Update Vehicle</button>
+
+ <!-- Allows to submit the primary key for the item without it being obvious to the client -->
+ <input type="hidden" name="inv_id" 
+ <% if(locals.inv_id) { %> value="<%= locals.inv_id %>" <% } %>>
+  
+</form>
+</div>
+<script src="/js/inv-update.js"></script>

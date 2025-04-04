@@ -1,4 +1,4 @@
-<h1>Inventory Management</h1>
+<h1 class="inv-management">Inventory Management</h1>
 
 <% if (messages && messages.success) { %>
 <p style="color: green"><%= messages.success %></p>
@@ -6,10 +6,30 @@
 <p style="color: red"><%= messages.error %></p>
 <% } %>
 
-<p>
+<p class="inv-management">
   <a href="/inv/add-classification">Add new classification</a>
 </p>
 
-<p>
+<p class="inv-management">
   <a href="/inv/add-inventory">Add new inventory</a>
 </p>
+
+<!-- Add Head -->
+ <h2 id="man-inv">Manage Inventory</h2>
+
+<!-- Instrutions for USer -->
+ <p id="pman-inv">Select a classification from the list below to see the items belonging to it.</p>
+
+<!-- Show classification List -->
+  <%- classificationSelect %>
+
+<!-- Empty Table to show vehicles -->
+ <table id="inventoryDisplay"></table>
+
+<!-- Message with Javascript unable -->
+ <noscript>Javascript must be enabled to use this page.</noscript>  
+
+<!-- Connect the file to JS -->
+ <script src="../../js/inventory.js"></script>
+
+ 

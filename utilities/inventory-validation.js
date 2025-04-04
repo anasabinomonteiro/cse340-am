@@ -103,4 +103,34 @@ validateInventory.checkAddInventoryData = async (req, res, next) => {
     }
 };
 
+/* ******************************************
+ * Check erros - if exists > direct back to edit view
+ * *************************************** */
+validateInventory.checkUpdateData = async (req, res, next) => {
+    try {
+        const errors = validationResult(req);
+        const { inv_id } = req.body; // Extract inv_id from the request body
+
+        if (!errors.isEmpty()) {
+            let nav = await utilities.getNav()
+            let classificationList = await utilities.buildClassificationList(req.body.classification_id)
+
+            return res.render("inventory/edit-inventory", {
+                title: "Edit Inventory",
+                nav,
+                classificationList,
+                inv_id,
+                errors: errors.array(),
+                messages: { error: "Please correct the errors below and try again." },
+                locals: req.body, // Pass the original input back to the form
+            });
+        }
+        return next();
+    } catch (error) {
+        console.error("Error in checkAddInventoryData:", error);
+        return res.status(500).send("Internal Server Error");
+    }
+};
+
+
 module.exports = validateInventory

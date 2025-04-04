@@ -1,0 +1,12 @@
+<h1><%= title  %></h1>
+
+<!-- Flash message -->
+<% if (messages && Object.keys(messages).length > 0) { %>
+  <% for (const type in messages) { %>
+    <% messages[type].forEach(function(msg) { %>
+      <p class="flash-message <%= type %>"><%= msg %></p>
+    <% }) %>
+  <% } %>
+<% } %>
+
+<p>You are logge in.</p>

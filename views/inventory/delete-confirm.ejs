@@ -1,0 +1,62 @@
+<h1>Delete an item from inventory</h1>
+
+<% if (messages && messages.success) { %>
+<p style="color: green; font-size: 2.2em; font-weight:bold;"><%= messages.success %></p>
+<% } %> <% if (messages && messages.error) { %>
+<p style="color: red; font-size: 2.2em; font-weight:bold;"><%= messages.error %></p>
+<% } %>
+
+<p class="pg-delete">Confirm Deletion - The deletion is permanent.</p>
+<form action="/inv/delete-confirm" method="POST" id="deleteForm" class="delete-inventory-form">
+    
+  <label for="inv_make">Make</label>
+  <input
+    type="text"
+    id="inv_make"
+    name="inv_make"
+    value="<%= locals.inv_make || '' %>"
+    required
+    readonly
+  />
+
+  <label for="inv_model">Model</label>
+  <input
+    type="text"
+    id="inv_model"
+    name="inv_model"
+    value="<%= locals.inv_model || '' %>"
+    required
+    readonly
+  />
+
+  <label for="inv_year">Year</label>
+  <input
+    type="text"
+    id="inv_year"
+    name="inv_year"
+    maxlength="4"
+    value="<%= locals.inv_year || '' %>"
+    required
+    readonly
+  />
+  
+  <label for="inv_price">Price</label>
+  <input
+    type="number"
+    id="inv_price"
+    name="inv_price"
+    value="<%= locals.inv_price || '' %>"
+    required
+    readonly
+    step="0.01"
+    min="0"
+  /> 
+
+  <button type="submit">Confirm Delete Vehicle</button>
+
+ <!-- Allows to submit the primary key for the item without it being obvious to the client -->
+ <input type="hidden" name="inv_id" 
+ <% if(locals.inv_id) { %> value="<%= locals.inv_id %>" <% } %>>
+  
+</form>
+

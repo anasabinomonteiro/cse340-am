@@ -9,4 +9,18 @@
   <% } %>
 <% } %>
 
+<h2>Welcome <%= accountData.account_firstname %></h2>
+
 <p>You are logge in.</p>
+
+<!-- Update Account Link -->
+<p><a href="/account/update/<%= accountData.account_id %>">Update Account Information</a></p>
+
+<!-- Only for Admin/Employee -->
+<% if (accountData.account_type === 'Admin' || accountData.account_type === 'Employee') { %>
+  <h3>Inventory Management</h3>
+  <p><a href="/inv/">Manage Inventory</a></p>
+  <% } %>
+  
+
+

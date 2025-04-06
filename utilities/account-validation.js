@@ -114,4 +114,52 @@ validate.checkLoginData = async (req, res, next) => {
     next()
 }
 
+
+/* *********************************************************
+ * Update Account
+ * ******************************************************** */
+validate.updateAccountRules = () => {
+    return [
+        body("account_firstname")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isLength({ min: 1 })
+            .withMessage("Please provide a first name."),
+
+        body("account_lastname")
+            .trim()
+            .escape()
+            .notEmpty()
+            .isLength({ min: 2 })
+            .withMessage("Please provide a last name."),
+
+        body("account_email")
+            .trim()
+            .isEmail()
+            .normalizeEmail()
+            .withMessage("A valid email is required.")
+            .custom(async (account_email, { req }) => {
+                const accountId = req.body.account_id
+                const emailExists = await accountModel.checkExistingEmail(account_email, accountId)
+                if (emailExists) {
+                    throw new Error("Email already exists. Please log in or use different email.")
+                }
+            }),
+    ]
+}
+
+/* *********************************************************
+ * Update Password
+ * ******************************************************** */
+validate.updatePasswordRules = () => {
+    return [
+        body("account_password")
+            .trim()
+            .notEmpty()
+            .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/)
+            .withMessage("Password does not meet requirements."),
+    ]
+}
+
 module.exports = validate

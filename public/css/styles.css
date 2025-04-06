@@ -741,6 +741,85 @@ figcaption {
   background-color: #eb6371;
 }
 
+/********* Management Account Section *******************/
+.account-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-height: 100vh;
+  gap: 20px;
+  padding-left: 10px;
+}
+
+.account-update,
+.account-update-password {
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  margin: 30px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box;
+  background: rgb(217, 217, 240);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.account-update form,
+.account-update-password form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.account-update h2,
+.account-update-password h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.account-update label .account-update-password label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.account-update input,
+.account-update-password input,
+.account-update select,
+.account-update-password select,
+.account-update textarea,
+.account-update-password textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+
+.account-update button,
+.account-update-password button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.account-update button:hover,
+.account-update-password button:hover {
+  background-color: #0056b3;
+}
+
+
 /*##############################################################################*/
 /***********************Small screens 768px**************************************/
 @media (max-width: 768px) {
@@ -976,6 +1055,13 @@ figcaption {
   .delete-inventory-form button {
     font-size: 16px;
     padding: 12px;
+  }
+
+  /*Management Account Section*/
+  .account-update,
+  .account-update-password {
+    max-width: 90%;
+    padding: 15px;
   }
 
 }

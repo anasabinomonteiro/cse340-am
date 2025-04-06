@@ -1,7 +1,8 @@
 const invModel = require('../models/inventory-model')
-const Util = {}
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
+const Util = {}
+
 
 /* **********************************
  * Constructs the nav HTML unordered list
@@ -150,11 +151,35 @@ Util.checkJWTToken = (req, res, next) => {
  *  Check Login
 **************************************** */
 Util.checkLogin = (req, res, next) => {
-    if (res.locals.loggedin) {
+    const token = req.cookies.jwt
+    if (token) {
+        jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, accountData) => {
+            if (err) {
+                req.flash('error', 'Please log in.')
+                res.clearCookie('jwt')
+                return res.redirect('/account/login')
+            } else {
+                res.locals.loggedin = true;
+                res.locals.accountData = accountData;
+                return next();
+            }          
+        })
+     } else {
+        req.flash('error', 'Please log in.')
+        return res.redirect('/account/login')
+    }
+}
+
+/* ***************************************
+ *  Middleware to Check Account Type
+**************************************** */
+Util.checkAccountType = (req, res, next) => {
+    const accountType = res.locals.accountData?.accountType
+    if (accountType === 'Admin' || accountType === 'Employee') {
         next()
     } else {
-        req.flash('notice', 'Please log in.')
-        return res.redirect('/account/login')
+        req.flash('notice', 'You do not have permission to access this page.')
+        return res.redirect('/')
     }
 }
 

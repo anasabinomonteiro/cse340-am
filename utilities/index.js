@@ -139,7 +139,7 @@ Util.checkJWTToken = (req, res, next) => {
                     return res.redirect('/account/login')
                 }
                 res.locals.accountData = accountData
-                res.locals.loggedin = 1
+                res.locals.loggedIn = 1
                 next()
             })
     } else {
@@ -159,12 +159,12 @@ Util.checkLogin = (req, res, next) => {
                 res.clearCookie('jwt')
                 return res.redirect('/account/login')
             } else {
-                res.locals.loggedin = true;
+                res.locals.loggedIn = true;
                 res.locals.accountData = accountData;
                 return next();
-            }          
+            }
         })
-     } else {
+    } else {
         req.flash('error', 'Please log in.')
         return res.redirect('/account/login')
     }

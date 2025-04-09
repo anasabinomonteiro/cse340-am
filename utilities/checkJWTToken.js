@@ -6,7 +6,7 @@ const checkJWTToken = (req, res, next) => {
 
     if (!token) {
         res.locals.accountData = null
-        res.locals.loggedin = false
+        res.locals.loggedIn = false
         return next()
     }
 
@@ -17,7 +17,7 @@ const checkJWTToken = (req, res, next) => {
     }
     catch (err) {
         res.locals.accountData = null
-        res.locals.loggedin = false
+        res.locals.loggedIn = false
     }
     next()
 }

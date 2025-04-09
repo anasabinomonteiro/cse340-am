@@ -28,13 +28,28 @@ body {
   color: black;
 }
 
+#tools {
+  background-color: rgb(222, 222, 48, 0.5);
+}
+
 #tools a {
   font-size: 20px;
   text-decoration: none;
   color: black;
   padding: 10px 20px;
-  background-color: rgb(222, 222, 48, 0.5);
   border-radius: 5px;
+}
+
+#welcome-message {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: black;
+}
+
+#welcome-link {
+  text-decoration: none;
+  color: inherit
 }
 
 .welcome h1 {

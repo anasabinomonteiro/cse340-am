@@ -1,6 +1,7 @@
 const invModel = require('../models/inventory-model')
 const utilities = require('../utilities/')
 const invCont = {}
+const revModel = require('../models/review-model')
 
 /* ****************************************
  *Build inventory by classification view
@@ -29,18 +30,25 @@ invCont.getVehicleById = utilities.handleErrors(async function (req, res, next) 
         }
 
         const vehicle = await invModel.getVehicleById(inv_id)
+        const reviews = await revModel.getReviewsByInventoryId(inv_id)
         let nav = await utilities.getNav()
 
         if (!vehicle) {
             return res.status(404).send('Vehicle not found')
         }
 
+        res.locals.vehicle = vehicle // Store vehicle data in res.locals for use in the view
+
         res.render('inventory/details', {
             title: `${vehicle.inv_make} ${vehicle.inv_model}`,
             nav,
             vehicle,
+            reviews,
+            loggedIn: res.locals.loggedIn,
+            accountData: res.locals.accountData,
+            generateScreenName: utilities.generateScreenName,
             formatCurrency: utilities.formatCurrency,
-            formatNumber: utilities.formatNumber
+            formatNumber: utilities.formatNumber,
         })
     } catch (error) {
         console.error('Error fetching vehicle details:', error);

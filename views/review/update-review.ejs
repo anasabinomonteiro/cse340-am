@@ -1,0 +1,23 @@
+<% - include('../partials/head') %>
+
+<h1>Edit Review</h1>
+
+<!-- Flash message -->
+<% if (messages && Object.keys(messages).length > 0) { %>
+  <% for (const type in messages) { %>
+    <% messages[type].forEach(function(msg) { %>
+      <p class="flash-message <%= type %>"><%= msg %></p>
+    <% }) %>
+  <% } %>
+<% } %>
+
+<!-- Form -->
+<form action="/review/update-review/<%= review.review_id %>" method="POST" class="edit-review-form">
+  <input type="hidden" name="inv_id" value="<%= review.inv_id %>">
+  <input type="hidden" name="account_id" value="<%= review.account_id %>">
+  <label for="review_text">Edit your review:</label>
+  <textarea name="review_text" id="review_text" rows="4" required><%= review.review_text %></textarea>
+  <button type="submit">Update Review</button>
+</form>
+
+<a href="/account">Cancel</a>

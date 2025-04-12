@@ -5,6 +5,7 @@ const accountController = require('../controllers/accountController')
 const utilities = require('../utilities/')
 const regValidate = require('../utilities/account-validation')
 const accountValidation = require('../utilities/account-validation')
+const revController = require('../controllers/reviewController')
 
 // Route to handle My Account link click
 router.get('/login', utilities.handleErrors(accountController.buildLogin))
@@ -25,6 +26,9 @@ router.get('/update/:account_id', utilities.checkLogin, utilities.handleErrors(a
 
 //Logout  and delete cookie jwt 
 router.get('/logout', utilities.checkLogin, utilities.handleErrors(accountController.logout))
+
+// Display user reviews
+router.get('/reviews', utilities.checkLogin, utilities.handleErrors(revController.buildGetReviewsByAccountId))
 
 // Process the registration data
 router.post('/register',

@@ -22,5 +22,25 @@
   <p><a href="/inv/">Manage Inventory</a></p>
   <% } %>
   
+<!-- Edit or Delete review -->
+ <div class="review-management">
+  <h3>Your Reviews</h3>
 
+  <% if (reviews && reviews.length > 0) { %>
+    <% reviews.forEach(review => { %>
+      <div class="review">
+        <p>
+          <strong><%= generateScreenName(review.account_firstname, review.account_lastname) %> wrrote on <%= new Date(review.review_date).toLocaleDateString()  %></strong>
+        </p>
+        <p><%= review.review_text %></p>
+        <p>
+          <a href="/review/edit-review/<%= review.review_id %>" class="edit-review">Edit</a> |
+          <a href="/review/delete-review/<%= review.review_id %>" class="delete-review">Delete</a>
+        </p>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>You have not written any reviews yet.</p>
+  <% } %>
+</div>
 

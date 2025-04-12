@@ -17,6 +17,7 @@ const static = require("./routes/static")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
 const accountRoute = require("./routes/accountRoute")
+const reviewRoute = require("./routes/reviewRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 
@@ -75,7 +76,10 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 app.use("/inv", inventoryRoute)
 
 // Account route
-app.use("/account", require("./routes/accountRoute"))
+app.use("/account", accountRoute)
+
+// Review route
+app.use("/review", reviewRoute)
 
 //File Not Founf Route - 404 - must be last in list!!!
 app.use(async (req, res, next) => {

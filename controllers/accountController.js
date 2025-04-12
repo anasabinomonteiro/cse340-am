@@ -1,3 +1,5 @@
+const reviewModel = require('../models/review-model')
+
 /* ****************************************
 *  Account Controller
 * *************************************** */
@@ -138,13 +140,21 @@ async function buildAccountManagement(req, res, next) {
     const messages = req.flash();
     const accountData = res.locals.accountData
 
-    res.render("account/management", {
-        title: "Account Management",
-        nav,
-        messages,
-        accountData,
-        loggedIn: res.locals.loggedIn,
-    });
+    try {
+        const reviews = await reviewModel.getReviewsByAccountId(accountData.account_id)
+
+        res.render("account/management", {
+            title: "Account Management",
+            nav,
+            messages,
+            accountData,
+            reviews,
+            loggedIn: res.locals.loggedIn,
+            generateScreenName: utilities.generateScreenName,
+        })
+    } catch (error) {
+        next(error)
+    }
 }
 
 /* ****************************************

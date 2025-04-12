@@ -20,3 +20,35 @@
     <p><strong>Mileage: </strong> <%= formatNumber(vehicle.inv_miles) %></p>
   </div>
 </div>
+
+<!-- Review form -->
+<div class="vehicle-reviews">
+  <h2>Customer Reviews</h2>
+
+  <% if (Array.isArray(reviews) && reviews.length > 0) { %>
+    <% reviews.forEach(review => { %>
+      <div class="review">
+        <p>
+          <strong><%= generateScreenName(review.account_firstname, review.account_lastname) %> wrote on <%= new Date(review.review_date).toLocaleDateString()  %></strong>
+        </p>
+        <p><%= review.review_text %></p>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <p>No reviews yet. Be the first to leave a review!</p>
+  <% } %>
+
+  <% if (locals.loggedIn) { %> 
+    <form action="/review/add-review/<%= vehicle.inv_id %>" method="POST" class="add-review-form">
+      <input type="hidden" name="inv_id" value="<%= vehicle.inv_id %>">
+      <input type="hidden" name="account_id" value="<%= locals.accountData.account_id %>">
+      <label for="screen_name">Screen Name:</label>
+      <input type="text" name="screen_name" id="screen_name" class="screen-name" value="<%= generateScreenName(locals.accountData.account_firstname, locals.accountData.account_lastname) %>" disabled>
+      <label for="review_text">Add a review:</label>
+      <textarea name="review_text" id="review_text" rows="4" required></textarea>
+      <button type="submit">Submit Review</button>
+    </form>
+  <% } else { %>
+    <p>You must <a href="/account/login">login</a> to write a review.</p>
+  <% } %>
+</div>

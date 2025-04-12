@@ -183,4 +183,13 @@ Util.checkAccountType = (req, res, next) => {
     }
 }
 
+/* ***************************************
+ *  Middleware to Check Account Type
+**************************************** */
+Util.generateScreenName =  function (firstName, lastName) {
+    if (!firstName || !lastName) {
+        return ''
+    }  return firstName.charAt(0).toUpperCase() +  lastName
+}
+
 module.exports = Util;

@@ -6,23 +6,24 @@ const utilities = require('../utilities/')
 const validateClassification = require('../utilities/classification-validation')
 const validateInventory = require('../utilities/inventory-validation')
 const auth = require('../utilities/authorization-validation')
+const reviewController = require('../controllers/reviewController')
 
-//Route to build inventory by classification view
+// Route to build inventory by classification view
 router.get('/type/:classificationId', invController.buildByClassificationId);
 
-//Route to build inventory by specific detail view
-router.get('/detail/:inventoryId', invController.getVehicleById);
+// Route to build inventory by specific detail view
+router.get('/detail/:inventoryId', invController.getVehicleById, reviewController.buildGetReviewsByInventoryId);
 
-//Route to trigger intentional error (500)
+// Route to trigger intentional error (500)
 router.get('/intentional-error', invController.triggerIntentionalError);
 
-//Route to inventory management page
+// Route to inventory management page
 router.get('/', auth.authorizeEmployeeorAdmin, utilities.handleErrors(invController.buildManagement));
 
 //Route to add new classification
 router.get('/add-classification', auth.authorizeEmployeeorAdmin, utilities.handleErrors(invController.buildAddClassification));
 
-//Route to add new inventory(vehicle)
+// Route to add new inventory(vehicle)
 router.get('/add-inventory', auth.authorizeEmployeeorAdmin, utilities.handleErrors(invController.buildAddInventory));
 
 router.get('/getInventory/:classification_id', utilities.handleErrors(invController.getInventoryJSON));
